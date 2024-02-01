@@ -7,10 +7,15 @@ class Board:
         self.board = [[EmptyCell() for __ in range(8)] for _ in range(8)]
         self.initialBoard()
         self.enPassant = None
+        self.boardColumns = ["A", "B", "C", "D", "E", "F", "G", "H"]
     
     def __str__(self):
-        result = ""
+        result = "   "
         for i in range(8):
+            result += self.boardColumns[i] + " "
+        result += "\n\n"
+        for i in range(7, -1, -1):
+            result += str(i+1) + "  "
             for j in range(8):
                 result += str(self.board[i][j]) + " "
             result += "\n"

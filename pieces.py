@@ -21,7 +21,7 @@ class Pawn(Piece):
         super().__init__(isWhite)
     
     def __str__(self):
-        return "p" if self.white else "P"
+        return "P" if self.white else "p"
 
 class Rook(Piece):
     
@@ -29,32 +29,32 @@ class Rook(Piece):
         super().__init__(isWhite)
     
     def __str__(self):
-        return "r" if self.white else "R"
+        return "R" if self.white else "r"
     
 class Knight(Piece):    
     def __init__(self, isWhite):
         super().__init__(isWhite)
     
     def __str__(self):
-        return "n" if self.white else "N"
+        return "N" if self.white else "n"
     
 class Bishop(Piece):
     def __init__(self, isWhite):
         super().__init__(isWhite)
     
     def __str__(self):
-        return "b" if self.white else "B"
+        return "B" if self.white else "b"
 
 class Queen(Piece):
     def __init__(self, isWhite):
         super().__init__(isWhite)
     
     def __str__(self):
-        return "q" if self.white else "Q"
+        return "Q" if self.white else "q"
 
 class King(Piece):
     def __init__(self, isWhite):
         super().__init__(isWhite)
     
     def __str__(self):
-        return "k" if self.white else "K"
+        return "K" if self.white else "k"
