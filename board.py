@@ -1,5 +1,6 @@
 from pieces import *
 from move import Move
+from moves_controller import MoveController
 class Board:
     
     def __init__(self):
@@ -8,6 +9,7 @@ class Board:
         self.initialBoard()
         self.enPassant = None
         self.boardColumns = ["A", "B", "C", "D", "E", "F", "G", "H"]
+        self.moveController = MoveController()
     
     def __str__(self):
         result = "   "
@@ -49,6 +51,9 @@ class Board:
         for i in range(8):
             self.board[6][i] = Pawn(False)
     
+    def getMoves(self, row, col):
+        return self.moveController.getMoves(self.board, row, col, self.enPassant)
+    
     def applyMove(self, move: Move):
                 
         self.board[move.end[0]][move.end[1]] = self.board[move.start[0]][move.start[1]]
@@ -59,3 +64,15 @@ class Board:
             self.enPassant = [move.end[0]-1, move.end[1]] if self.board[move.end[0]][move.end[1]].isWhite() else [move.end[0]+1, move.end[1]]
         else:
             self.enPassant = None
+            
+    
+    def isCellAttacked(self, row, col, whiteTurn):
+        moves = []
+        for i in range(8):
+            for j in range(8):
+                if self.board[i][j].isWhite() != whiteTurn:
+                    moves += MoveController().getMoves(self, i, j)
+        for move in moves:
+            if move.end == [row, col]:
+                return True
+        return False

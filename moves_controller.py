@@ -6,13 +6,12 @@ class MoveController():
     def __init__(self):
         pass
     
-    def getMoves(self, globalBoard, row, col):
-        board = globalBoard.board
+    def getMoves(self, board, row, col, enPassant):
         piece = board[row][col]
         if isinstance(piece, EmptyCell):
             return []
         elif isinstance(piece, Pawn):
-            return self.getPawnMoves(board, row, col, globalBoard.enPassant)
+            return self.getPawnMoves(board, row, col, enPassant)
         elif isinstance(piece, Rook):
             return self.getRookMoves(board, row, col)
         elif isinstance(piece, Knight):

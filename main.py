@@ -17,7 +17,6 @@ def coordToString(coord):
 
 def main():
     board = Board()
-    moveController = MoveController()
     whiteTurn = True
     
     while(True):    
@@ -36,7 +35,7 @@ def main():
             continue
         
         # get possible moves
-        moves = moveController.getMoves(board, start[0], start[1])
+        moves = board.getMoves(start[0], start[1])
         for i in range(len(moves)):
             print(str(i) + ": " + coordToString(moves[i].end))
         choice = input("Enter selected move: ")
